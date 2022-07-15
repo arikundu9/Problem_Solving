@@ -8,13 +8,18 @@
 	// Example:
 	"cpp basic main function": {
 		"scope": "cpp",
-		"prefix": "mymain",
+		"prefix": "leetcpp",
 		"body": [
 			"#include<bits/stdc++.h>",
 			"using namespace std;",
-			"\t$1",
+			"class Solution {",
+			"\tpublic:",
+			"\t\tSolution(){}",
+			"\t\t${1:func}",
+			"};",
 			"int main(){",
-			"\t${0://body}",
+			"\tSolution leetcode;",
+			"\tcout<<leetcode.${0:func}",
 			"\treturn 0;",
 			"}"
 		],
