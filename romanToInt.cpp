@@ -1,7 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int val(char c) {
+
+
+class Solution {
+ public:
+  Solution() {}
+  int romanToInt(string s) {
+    int r=0;
+    for (int cur_pos = 0; cur_pos < s.length(); cur_pos++) {
+        if(cur_pos!=s.length()-1){
+            if(val(s.at(cur_pos))<val(s.at(cur_pos+1))){
+              r=r-val(s.at(cur_pos));
+            }
+            else{
+              r=r+val(s.at(cur_pos));
+            }
+        }
+        else{
+          r=r+val(s.at(cur_pos));
+        }
+    }
+    return r;
+  }
+  int val(char c) {
   int r;
   switch (c) {
     case 'I':
@@ -28,33 +50,11 @@ int val(char c) {
   }
   return r;
 }
-
-class Solution {
- public:
-  Solution() {}
-  int romanToInt(string s) {
-    int r=0;
-    for (int cur_pos = 0; cur_pos < s.length(); cur_pos++) {
-        if(cur_pos!=s.length()-1){
-            if(val(s.at(cur_pos))<val(s.at(cur_pos+1))){
-                r=r-val(s.at(cur_pos));
-            }
-            else{
-                
-            }
-        }
-        else{
-
-        }
-      cout << s.at(cur_pos) << endl;
-    }
-    return 1;
-  }
 };
 int main() {
   Solution leetcode;
   string ip;
   cin >> ip;
-  leetcode.romanToInt(ip);
+  cout<<leetcode.romanToInt(ip);
   return 0;
 }
