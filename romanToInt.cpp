@@ -1,26 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define I 1
-#define V 5
-#define X 10
-#define L 50
-#define C 100
-#define D 500
-#define M 1000
+
+int val(char c) {
+  int r;
+  switch (c) {
+    case 'I':
+      r = 1;
+      break;
+    case 'V':
+      r = 5;
+      break;
+    case 'X':
+      r = 10;
+      break;
+    case 'L':
+      r = 50;
+      break;
+    case 'C':
+      r = 100;
+      break;
+    case 'D':
+      r = 500;
+      break;
+    case 'M':
+      r = 1000;
+      break;
+  }
+  return r;
+}
 
 class Solution {
  public:
   Solution() {}
   int romanToInt(string s) {
-    for (char c : s)
-    {
-        cout<<c<<endl;
+    int r=0;
+    for (int cur_pos = 0; cur_pos < s.length(); cur_pos++) {
+        if(cur_pos!=s.length()-1){
+            if(val(s.at(cur_pos))<val(s.at(cur_pos+1))){
+                r=r-val(s.at(cur_pos));
+            }
+            else{
+                
+            }
+        }
+        else{
+
+        }
+      cout << s.at(cur_pos) << endl;
     }
     return 1;
   }
 };
 int main() {
   Solution leetcode;
-  leetcode.romanToInt("");
+  string ip;
+  cin >> ip;
+  leetcode.romanToInt(ip);
   return 0;
 }
