@@ -16,16 +16,48 @@ void addval(ListNode *l,int val){
 }
 void printl(ListNode *l){
     while(l!=nullptr){
-        cout<<l->val<<",";
+        cout<<l->val;
         l=l->next;
     }
-    cout<<endl;
+    // cout<<endl;
 }
 class Solution {
     public:
         Solution(){}
         ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-            
+            ListNode *r=new ListNode();
+            ListNode *rr=r;
+            int c=0,a;
+            while(1){
+                if(l1!=nullptr and l2!=nullptr){
+                    a=l1->val+l2->val+c;
+                    l1=l1->next;
+                    l2=l2->next;
+                }
+                else if(l1==nullptr and l2!=nullptr){
+                    a=l2->val+c;
+                    l2=l2->next;
+                }
+                else if(l2==nullptr and l1!=nullptr){
+                    a=l1->val+c;
+                    l1=l1->next;
+                }
+                else if(c!=0){
+                    a=c;
+                }
+                else{
+                    break;
+                }
+                c=0;
+                if(a>9){
+                    a%=10;
+                    c=1;
+                } 
+                // cout<<"carry:"<<c<<" sum:"<<a<<endl;
+                r->next=new ListNode(a);
+                r=r->next;
+            }
+            return rr->next;
         }
 };
 int main(){
@@ -43,6 +75,6 @@ int main(){
     {
         addval(l2,int(d)-48);
     }
-    cout<<leetcode.addTwoNumbers(l1->next,l2->next);
+    printl(leetcode.addTwoNumbers(l1->next,l2->next));
     return 0;
 }
