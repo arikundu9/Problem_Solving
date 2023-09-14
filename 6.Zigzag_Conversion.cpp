@@ -10,13 +10,16 @@ class Solution {
             for(int i=0; i<s.length(); i=i+numRows+(numRows%2==0 ? 2 : 1)){
                 if(k==0){
                     r+=s[i];
+                    cout << "[*] i="<<i<<" and k="<<k<<" v="<<s[i]<<endl;
                 }
                 else{
                     if(i-k>0){
                         r+=s[i-k];
+                        cout << "[+] i="<<i<<" and k="<<k<<" v="<<s[i-k]<<endl;
                     }
                     if(i+k<=s.length()-1){
                         r+=s[i+k];
+                        cout << "[-] i="<<i<<" and k="<<k<<" v="<<s[i+k]<<endl;
                     }
                 }
             }
