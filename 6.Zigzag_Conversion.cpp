@@ -4,7 +4,22 @@ class Solution {
     public:
     Solution() {}
     string convert(string s,int numRows) {
-        string r="PAHNAPLSIIGYIR";
+        string r;
+        for(int k=0; k<numRows; k++){
+            for(int i=0; i<s.length(); i=i+numRows+2){
+                if(k==0){
+                    r+=s[i];
+                }
+                else{
+                    if(i-k>0 and i-k<s.length()-1){
+                        r+=s[i-k];
+                    }
+                    if(i+k>0 and i+k<s.length()-1){
+                        r+=s[i+k];
+                    }
+                }
+            }
+        }
         return r;
     }
 };
