@@ -8,23 +8,28 @@ class node {
   public:
     node() {}
     void insert(string str) {
-        if (str.length() == 2) {
+        // cout<<"[+] insert(str)"<<str<<endl;
+        if (str.length() == 1) {
             childs.insert(pair<char, node *>(str[0], nullptr));
-        } else if (str.length() > 2) {
+        } else if (str.length() > 1) {
             node *newNode = new node();
             newNode->insert(str.substr(1, str.length() - 1));
             childs.insert(pair<char, node *>(str[0], newNode));
         }
     }
     void print(string ind = "\t") {
+        int i=0;
+        cout<<"\n[+] print()"<<endl;
         multimap<char, node *>::iterator itr;
-        cout << "\tKEY\tELEMENT\n";
         for (itr = childs.begin(); itr != childs.end(); ++itr) {
-            cout << ind << itr->first;
-            itr->second->print(ind + "\t");
+            cout <<"{"<<i<<"}"<< ind << itr->first;
+            // cout << ind + "\t" << itr->second->childs.size();
+            // itr->second->print(to_string(i*10+1)+ind + "\t");
             cout << endl;
+            ++i;
         }
         cout << endl;
+        return ;
     }
 };
 // class node{
