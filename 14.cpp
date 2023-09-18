@@ -53,7 +53,7 @@ class node {
         return prefix;
     }
 };
-class binaryTrie {};
+
 class Solution {
     vector<string> strs;
 
