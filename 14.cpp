@@ -3,48 +3,56 @@
 using namespace std;
 class node {
   private:
-    multimap<char, node *> childs;
+    char data;
+    vector<node *> childs;
 
   public:
-    node() {}
-    void insert(string str) {
-        // cout<<"[+] insert(str)"<<str<<endl;
+    node() { data = '\0'; }
+    node(char c) { data = c; }
+
+    void insertChild(string str) {
         if (str.length() == 1) {
-            childs.insert(pair<char, node *>(str[0], nullptr));
+            node *newNode = findOrGetNew(str[0]);
         } else if (str.length() > 1) {
-            node *newNode = new node();
-            newNode->insert(str.substr(1, str.length() - 1));
-            childs.insert(pair<char, node *>(str[0], newNode));
+            node *newNode = findOrGetNew(str[0]);
+            newNode->insertChild(str.substr(1, str.length() - 1));
         }
     }
-    void print(string ind = "\t") {
-        int i=0;
-        cout<<"\n[+] print()"<<endl;
-        multimap<char, node *>::iterator itr;
-        for (itr = childs.begin(); itr != childs.end(); ++itr) {
-            cout <<"{"<<i<<"}"<< ind << itr->first;
-            // cout << ind + "\t" << itr->second->childs.size();
-            // itr->second->print(to_string(i*10+1)+ind + "\t");
-            cout << endl;
-            ++i;
+
+    node *findOrGetNew(char c) {
+        for (node *n : childs) {
+            if (n->data == c) {
+                return n;
+            }
         }
-        cout << endl;
-        return ;
+        node *p = new node(c);
+        childs.push_back(p);
+        return p;
+    }
+
+    void print(string ind = "\t|") {
+        cout << ind + "[+] " << data << endl;
+        for (node *n : childs) {
+            n->print(ind + "\t|");
+        }
+    }
+
+    string getPrifix() {
+        string prefix;
+        if (childs.size() == 1) {
+            if (data != '\0') {
+                prefix = data + childs[0]->getPrifix();
+            } else {
+                prefix = childs[0]->getPrifix();
+            }
+        } else {
+            if (data != '\0') {
+                prefix = data;
+            }
+        }
+        return prefix;
     }
 };
-// class node{
-//     private:
-//         map<char,node*> leftChild;
-//         map<char,node*> rightChild;
-//     public:
-//         node(){}
-//         void insert(string str){
-//             if (str.length() == 2) {
-
-//             }
-//             else if(str.length()>2){}
-//         }
-// };
 class binaryTrie {};
 class Solution {
     vector<string> strs;
@@ -54,13 +62,12 @@ class Solution {
     string longestCommonPrefix(vector<string> &strs) {
         this->strs = strs;
         node *start = new node();
-        string prefix = "";
         for (string x : strs) {
-            start->insert(x);
+            start->insertChild(x);
             // cout << x << endl;
         }
-        start->print();
-        return prefix;
+        // start->print();
+        return start->getPrifix();
     }
 };
 
