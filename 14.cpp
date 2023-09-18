@@ -40,11 +40,21 @@ class node {
     }
 
     string getPrifix() {
-        string prefix="";
+        string prefix = "";
         if (childs.size() == 1) {
-            prefix = data + childs[0]->getPrifix();
-        } else {
-            if (!isEnd) {
+            if (data != '\0') {
+                prefix = data + childs[0]->getPrifix();
+            } else {
+                prefix = childs[0]->getPrifix();
+            }
+        }
+        if (childs.size() == 0) { //ab,a got stuck
+            if (data != '\0') {
+                prefix = data;
+            }
+        }
+        if (childs.size() > 1) {
+            if (!isEnd and data != '\0') {
                 prefix = data;
             }
         }
@@ -89,7 +99,9 @@ int main() {
     // ip.push_back("flow");
     // ip.push_back("flight");
     // cout << leetcode.longestCommonPrefix(ip);
-    cout<<("fa"==leetcode.longestCommonPrefix(ip))<<endl;
+    // string h = "fab";
+    // cout<<h.length()<<endl;
+    cout << leetcode.longestCommonPrefix(ip) << endl;
     return 0;
 }
 
@@ -105,3 +117,9 @@ int main() {
 // "ab"
 // Expected
 // "a"
+
+
+
+
+
+
