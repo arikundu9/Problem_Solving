@@ -1,30 +1,32 @@
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 class Solution {
-public:
-    string longestCommonPrefix(vector<string>& strs) {
+    vector<string> strs;
+
+  public:
+    string longestCommonPrefix(vector<string> &strs) {
+        this->strs = strs;
         string prefix = "";
-        for(string x : strs){
-            cout<<x<<endl;
+        for (string x : strs) {
+            cout << x << endl;
         }
-        return prefix ;
+        return prefix;
     }
 };
-    
-int main(){
+
+int main() {
     Solution leetcode;
     vector<string> ip;
     string i;
-    while(true){
-        cin>>i;
-        if(i[0]>=97 and i[0]<=122){
+    while (true) {
+        cin >> i;
+        if (i[0] >= 97 and i[0] <= 122) {
             ip.push_back(i);
-        }
-        else{
+        } else {
             break;
         }
     }
-    cout<<leetcode.longestCommonPrefix(ip);
+    cout << leetcode.longestCommonPrefix(ip);
     return 0;
 }
