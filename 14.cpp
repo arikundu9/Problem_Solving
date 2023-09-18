@@ -11,7 +11,7 @@ class node {
     node(char c) { data = c; }
 
     void insertChild(string str) {
-        if (str.length() == 1) {
+        if (str.length() <= 1) {
             node *newNode = findOrGetNew(str[0]);
         } else if (str.length() > 1) {
             node *newNode = findOrGetNew(str[0]);
@@ -55,19 +55,19 @@ class node {
 };
 
 class Solution {
-    vector<string> strs;
 
   public:
     Solution() {}
     string longestCommonPrefix(vector<string> &strs) {
-        this->strs = strs;
+        string prefix;
         node *start = new node();
         for (string x : strs) {
             start->insertChild(x);
-            // cout << x << endl;
+            // cout <<"[x]"<< x << endl;
         }
         // start->print();
-        return start->getPrifix();
+        prefix = start->getPrifix();
+        return prefix;
     }
 };
 
@@ -75,14 +75,31 @@ int main() {
     Solution leetcode;
     vector<string> ip;
     string i;
-    while (true) {
-        cin >> i;
-        if (i[0] >= 97 and i[0] <= 122) {
-            ip.push_back(i);
-        } else {
-            break;
-        }
-    }
+    // while (true) {
+    //     cin >> i;
+    //     if (i[0] >= 97 and i[0] <= 122) {
+    //         ip.push_back(i);
+    //         // cout<<"[--] "<<i<<endl;
+    //     } else {
+    //         break;
+    //     }
+    // }
+
+    ip.push_back("");
+    ip.push_back("b");
     cout << leetcode.longestCommonPrefix(ip);
     return 0;
 }
+
+// Wrong Answer
+// 102 / 124 testcases passed
+// Editorial
+// Input
+// strs =
+// ["ab", "a"]
+
+// Use Testcase
+// Output
+// "ab"
+// Expected
+// "a"
