@@ -1,4 +1,4 @@
-
+//https://leetcode.com/problems/longest-common-prefix/submissions/1053186692/
 #include <bits/stdc++.h>
 using namespace std;
 class node {
@@ -39,22 +39,18 @@ class node {
         }
     }
 
-    string getPrifix() {
+    string getPrifix(bool previousFlag = false) {
         string prefix = "";
         if (childs.size() == 1) {
-            if (data != '\0') {
-                prefix = data + childs[0]->getPrifix();
-            } else {
-                prefix = childs[0]->getPrifix();
+            if (!previousFlag) {
+                if (data != '\0') {
+                    prefix = data + childs[0]->getPrifix(isEnd);
+                } else {
+                    prefix = childs[0]->getPrifix(isEnd);
+                }
             }
-        }
-        if (childs.size() == 0) { //ab,a got stuck
-            if (data != '\0') {
-                prefix = data;
-            }
-        }
-        if (childs.size() > 1) {
-            if (!isEnd and data != '\0') {
+        } else {
+            if (!previousFlag and data != '\0') {
                 prefix = data;
             }
         }
@@ -117,9 +113,3 @@ int main() {
 // "ab"
 // Expected
 // "a"
-
-
-
-
-
-
