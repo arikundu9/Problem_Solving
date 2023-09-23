@@ -17,12 +17,23 @@ class Solution {
                 find(visitedStorage.begin(), visitedStorage.end(), c);
             if (it != visitedStorage.end()) {
                 // repeat found.
+                // cout<<"  [LOG]: c="<<c;
+                // cout<<"  [LOG]: size="<<visitedStorage.size();
+                // print();
+                
                 returnLength = max(returnLength, int(visitedStorage.size()));
-                visitedStorage.erase(visitedStorage.begin(), it);
+                visitedStorage.erase(visitedStorage.begin(), ++it);
             }
             visitedStorage.push_back(c);
         }
         return returnLength;
+    }
+    void print(){
+        cout<<"  [PRINT] ";
+        for(char c : visitedStorage){
+            cout<<c<<", ";
+        }
+        cout<<endl;
     }
 };
 int main() {
