@@ -1,0 +1,1 @@
+{"name":"Local: 15","url":"/mnt/Store/Problem_Solving/15.3sum.cpp","tests":[{"id":1695499176011,"input":"-1,0,1,2,-1,-4","output":"-1,-1,2,\n-1,0,-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/Store/Problem_Solving/15.3sum.cpp","group":"local","local":true}
