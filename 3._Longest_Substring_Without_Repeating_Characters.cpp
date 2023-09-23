@@ -11,17 +11,16 @@ class Solution {
   public:
     Solution() {}
     int lengthOfLongestSubstring(string s) {
-        int windowL = 0, windowR = 0, returnLength = 0, itr = 0;
+        int returnLength = 0;
         for (char c : s) {
-            visitedStorage.push_back(c);
             list<char>::iterator it =
                 find(visitedStorage.begin(), visitedStorage.end(), c);
             if (it != visitedStorage.end()) {
                 // repeat found.
-                int diff = it - visitedStorage.begin();
-                returnLength = max(returnLength, diff);
+                returnLength = max(returnLength, int(visitedStorage.size()));
+                visitedStorage.erase(visitedStorage.begin(), it);
             }
-            itr++;
+            visitedStorage.push_back(c);
         }
         return returnLength;
     }
