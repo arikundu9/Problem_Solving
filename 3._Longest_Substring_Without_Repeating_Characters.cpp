@@ -20,20 +20,20 @@ class Solution {
                 // cout<<"  [LOG]: c="<<c;
                 // cout<<"  [LOG]: size="<<visitedStorage.size();
                 // print();
-                
-                returnLength = max(returnLength, int(visitedStorage.size()));
                 visitedStorage.erase(visitedStorage.begin(), ++it);
             }
             visitedStorage.push_back(c);
+
+            returnLength = max(returnLength, int(visitedStorage.size()));
         }
         return returnLength;
     }
-    void print(){
-        cout<<"  [PRINT] ";
-        for(char c : visitedStorage){
-            cout<<c<<", ";
+    void print() {
+        cout << "  [PRINT] ";
+        for (char c : visitedStorage) {
+            cout << c << ", ";
         }
-        cout<<endl;
+        cout << endl;
     }
 };
 int main() {
