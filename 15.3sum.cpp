@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/3sum/description/
 #include <iostream>
 #include <sstream>
+#include <tuple>
 #include <vector>
 using namespace std;
 class Solution {
@@ -9,10 +10,11 @@ class Solution {
 
   public:
     Solution() {}
-    vector<vector<int>> threeSum(vector<int> &nums) {
+    vector<vector<int>> threeSum(vector<int> &nums) { return triplets; }
+
+    // tuple<int, int> twoSum(int sum, int except, vector<int> nums) {
         
-        return triplets;
-    }
+    // }
 
     friend ostream &operator<<(ostream &out, const Solution &dummy) {
         for (vector<int> v : dummy.triplets) {
