@@ -42,7 +42,7 @@
         {
             "label": "compile and run",
             "type": "shell",
-            "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < ${fileBasenameNoExtension}_input.txt > ${fileBasenameNoExtension}_output.txt",
+            "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < ./ioFiles/${fileBasenameNoExtension}_input.txt > ./ioFiles/${fileBasenameNoExtension}_output.txt",
             "group": {
                 "kind": "build",
                 "isDefault": true
